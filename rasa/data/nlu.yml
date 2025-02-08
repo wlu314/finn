@@ -1,0 +1,236 @@
+version: "3.1"
+nlu:
+
+- intent: greet
+  examples: |
+    - Hello
+    - Hi
+    - Hey there
+    - Good morning
+    - Good afternoon
+    - Hi, how are you?
+    - What's up?
+    - Greetings
+    - Hey, what's going on?
+    - Hello there
+
+- intent: goodbye
+  examples: |
+    - Bye
+    - Goodbye
+    - See you later
+    - Talk to you soon
+    - Farewell
+    - I'm done, thanks
+    - Catch you next time
+    - Take care
+    - Have a great day
+    - All the best
+
+- intent: affirm
+  examples: |
+    - Yes
+    - Sure
+    - Absolutely
+    - Correct
+    - Certainly
+    - Yes, let's go bullish on that
+    - I'd confirm that order
+    - Yes, I'd like to proceed
+    - Yes, I'm comfortable with this trade
+    - Right, let's execute it
+
+- intent: deny
+  examples: |
+    - No
+    - Not really
+    - I don't think so
+    - Nah
+    - I'd rather not
+    - No, that's too risky
+    - I'd like to cancel that idea
+    - No, I'm not going short
+    - I don't want to execute that trade
+    - No, I'd skip this position
+
+- intent: request_market_order
+  examples: |
+    - I want to buy [SPY](symbol) at market
+    - Place a market order for [2](qty) shares of [AAPL](symbol)
+    - Buy [0.5](qty) shares of [TSLA](symbol) now
+    - Purchase [20](notional) dollars worth of [QQQ](symbol)
+    - Market order to sell [1](qty) share of [MSFT](symbol)
+    - Please buy [GOOG](symbol) at market price
+    - I want to go long on [AMZN](symbol) with a market order for [1](qty) share
+    - Execute a market sell for [2](qty) shares of [AMD](symbol)
+    - Could you buy [NVDA](symbol) at the current price?
+    - Market order for [5](qty) shares of [META](symbol)
+
+- intent: request_limit_order
+  examples: |
+    - I'd like to buy [AAPL](symbol) with a limit price of [150](limit_price)
+    - Place a limit order for [1](qty) share of [SPY](symbol) at [400.5](limit_price)
+    - Set a sell limit at [160.25](limit_price) for [TSLA](symbol)
+    - Buy [2](qty) shares of [QQQ](symbol) at [300](limit_price)
+    - Place a limit buy at [100.5](limit_price) for [AMD](symbol)
+    - I want to sell [1](qty) share of [MSFT](symbol) at [280.75](limit_price)
+    - Put a limit order to purchase [BA](symbol) at [210](limit_price)
+    - I'd like to place a limit order at [350.25](limit_price) for [GOOG](symbol)
+    - Order to buy [3](qty) shares of [AMZN](symbol) if it drops to [95](limit_price)
+    - Limit order to sell [2](qty) shares of [NVDA](symbol) at [230](limit_price)
+
+- intent: request_stop_order
+  examples: |
+    - I'd like to set a stop order for [SPY](symbol) at [300](stop_price)
+    - Stop order to buy [1](qty) share of [TSLA](symbol) at [800](stop_price)
+    - Place a stop sell for [AAPL](symbol) if it hits [140](stop_price)
+    - Set a stop market at [350](stop_price) for [MSFT](symbol)
+    - I'd like a stop order if [TSLA](symbol) goes below [750](stop_price)
+    - Create a stop buy at [360](stop_price) for [SPY](symbol)
+    - Put a stop order on [GOOG](symbol) at [90](stop_price)
+    - If [AMZN](symbol) hits [100](stop_price), stop sell [2](qty) shares
+    - Set a stop order at [120](stop_price) for [AMD](symbol)
+    - Stop order for [QQQ](symbol) if it drops below [290](stop_price)
+
+- intent: request_stop_limit_order
+  examples: |
+    - I want a stop limit order for [TSLA](symbol) with stop at [700](stop_price) and limit at [695](limit_price)
+    - Place a stop limit to sell [2](qty) shares of [AAPL](symbol) stop [140](stop_price), limit [139.5](limit_price)
+    - Set a stop limit buy on [SPY](symbol), stop [405](stop_price), limit [406](limit_price)
+    - Stop limit for [MSFT](symbol) with a stop of [250](stop_price) and a limit of [249](limit_price)
+    - I'd like a stop limit on [TSLA](symbol) with stop [710](stop_price), limit [709.5](limit_price)
+    - Put a stop limit sell for [1](qty) share of [GOOG](symbol), stop [88](stop_price), limit [87.5](limit_price)
+    - When [AMZN](symbol) hits [101](stop_price), place a stop limit buy at [102](limit_price)
+    - Stop limit to short [NVDA](symbol) if it crosses [230](stop_price), limit [229](limit_price)
+    - I'd like a stop limit to go long on [QQQ](symbol) at stop [300](stop_price), limit [301](limit_price)
+    - Create a stop limit for [AMD](symbol), stop [95](stop_price), limit [94.5](limit_price)
+
+- intent: request_trailing_stop_order
+  examples: |
+    - Place a trailing stop for [TSLA](symbol) with trail percent [0.2](trail_percent)
+    - I'd like a trailing stop on [SPY](symbol) with a trail price of [5](trail_price)
+    - Set a trailing stop on [AAPL](symbol) with [0.1](trail_percent) percentage
+    - Trailing stop for [QQQ](symbol) at [3](trail_price)
+    - Can you set a trailing stop on [AMZN](symbol) with a trail of [2.5](trail_price)?
+    - I'd like to use a 5% trailing stop on [GOOG](symbol)
+    - Place a trailing stop for [1](qty) share of [MSFT](symbol), trailing [7](trail_price)
+    - Put a trailing stop on [NVDA](symbol) with a 3% trail
+    - Set up a trailing stop for [BA](symbol) with a [4](trail_price) gap
+    - Apply a trailing stop of [0.05](trail_percent) for [AMD](symbol)
+
+- intent: request_bracket_order
+  examples: |
+    - I want a bracket order for [1](qty) share of [AAPL](symbol) with a limit price of [150](limit_price), take profit [160](take_profit), stop loss [140](stop_loss)
+    - Place a bracket order to buy [2](qty) shares of [TSLA](symbol) at [700](limit_price), take profit [750](take_profit), stop loss [680](stop_loss)
+    - Bracket order: [SPY](symbol), buy [1](qty) at market, with a stop loss at [390](stop_loss) and take profit at [410](take_profit)
+    - I'd like to set a bracket order on [MSFT](symbol) with a limit of [300](limit_price), take profit [320](take_profit), stop loss [290](stop_loss)
+    - Create a bracket order for [GOOG](symbol) with entry at [95](limit_price), stop loss [90](stop_loss), target [105](take_profit)
+    - Buy [1](qty) share of [AMZN](symbol) bracketed at [100](limit_price), stop [95](stop_loss), take profit [110](take_profit)
+    - Set a bracket order for [QQQ](symbol) entry [290](limit_price), exit at [300](take_profit), stop [285](stop_loss)
+    - I'd like to bracket [1](qty) share of [NVDA](symbol) at [225](limit_price), stop [215](stop_loss), profit [240](take_profit)
+    - Bracket to sell [BA](symbol) at [210](limit_price), stop [205](stop_loss), take profit [220](take_profit)
+    - Open a bracket on [AMD](symbol) with buy [1](qty) limit [90](limit_price), stop [85](stop_loss), target [100](take_profit)
+
+- intent: request_oto_order
+  examples: |
+    - Set an OTO order: if my buy for [SPY](symbol) at [400](limit_price) fills, place a stop at [390](stop_price)
+    - I'd like an OTO: first buy [TSLA](symbol) at [700](limit_price), then place a stop at [680](stop_price)
+    - OTO order for [1](qty) share of [AAPL](symbol) at [150](limit_price), trigger a stop [140](stop_price)
+    - If the market order for [QQQ](symbol) fills, trigger a stop at [280](stop_price)
+    - Please create an OTO: buy [2](qty) of [GOOG](symbol) at [90](limit_price), then place a stop at [85](stop_price)
+    - OTO for [AMZN](symbol): first entry at [100](limit_price), then a stop at [95](stop_price)
+    - Place an OTO for [NVDA](symbol): buy at [230](limit_price), then set a stop at [220](stop_price)
+    - I'd like an OTO with a market buy on [MSFT](symbol), then a stop at [270](stop_price)
+    - OTO for [1](qty) share of [BA](symbol) if filled at [210](limit_price), place a stop at [200](stop_price)
+    - Set OTO: entry for [AMD](symbol) at [90](limit_price), then stop at [85](stop_price)
+
+- intent: request_oco_order
+  examples: |
+    - I'd like to place an OCO: buy [TSLA](symbol) at [720](limit_price) or sell at [680](limit_price)
+    - Set an OCO for [AAPL](symbol): one order at [155](limit_price), another at [145](limit_price)
+    - OCO order: buy [SPY](symbol) if it hits [410](limit_price), or sell if it drops to [390](limit_price)
+    - Place OCO orders for [MSFT](symbol) at [305](limit_price) and [295](limit_price)
+    - I'd like an OCO on [GOOG](symbol): limit buy at [92](limit_price), limit sell at [88](limit_price)
+    - OCO for [AMZN](symbol) with two limit prices: [105](limit_price) and [95](limit_price)
+    - Put an OCO for [NVDA](symbol): buy if [230](limit_price), sell if [220](limit_price)
+    - Create an OCO for [QQQ](symbol): one at [300](limit_price), the other at [290](limit_price)
+    - I'd like an OCO with buy [AMD](symbol) at [100](limit_price), sell at [90](limit_price)
+    - OCO for [BA](symbol) around [210](limit_price) and [200](limit_price)
+
+- intent: request_get_orders
+  examples: |
+    - Show me all my orders
+    - I'd like to see a list of all orders
+    - Retrieve my order history
+    - What orders have I placed recently?
+    - Can you display my previous orders?
+    - List every order I've made
+    - Give me a summary of my orders
+    - Show my order log
+    - I'd like to check my orders
+    - Retrieve the full list of my orders
+
+- intent: request_get_open_orders
+  examples: |
+    - Show me my open orders
+    - Which orders are still active?
+    - List the orders that haven't filled yet
+    - I'd like to see my pending orders
+    - Display all unfilled orders
+    - What positions do I have on order currently?
+    - Can you show me my open trades?
+    - Show me the orders that are waiting to be filled
+    - I'd like to check pending orders
+    - Is anything still on the market waiting to be executed?
+
+- intent: request_cancel_all_orders
+  examples: |
+    - Cancel all open orders
+    - Cancel every pending order I have
+    - Close all unfilled orders
+    - I want to cancel all outstanding orders
+    - Please cancel any existing orders
+    - Drop all my active orders
+    - Remove all pending trades
+    - I want to clear all open orders now
+    - Cancel everything that's still open
+    - Delete all current orders
+
+- intent: request_get_positions
+  examples: |
+    - Show me all my positions
+    - I want to see my current holdings
+    - List my open positions
+    - Which stocks am I holding right now?
+    - Can you show me my portfolio?
+    - What am I holding in my account?
+    - Display my current positions
+    - I'd like to know which tickers I own
+    - Reveal my open trades
+    - Show me everything I'm invested in
+
+- intent: request_get_position_by_symbol
+  examples: |
+    - Show me my position in [TSLA](symbol)
+    - Do I have any [AAPL](symbol)?
+    - What's my current holding in [SPY](symbol)?
+    - Display my position for [MSFT](symbol)
+    - How many shares of [GOOG](symbol) do I hold?
+    - Check how much [AMZN](symbol) I'm invested in
+    - Do I have a position in [NVDA](symbol)?
+    - I'd like to see my stake in [QQQ](symbol)
+    - Am I holding any [BA](symbol)?
+    - Show me the details of my [AMD](symbol) position
+
+- intent: request_close_position
+  examples: |
+    - Close my position in [SPY](symbol)
+    - Sell all I have of [AAPL](symbol)
+    - I want to close [0.5](qty) shares of [TSLA](symbol)
+    - Liquidate my [MSFT](symbol) position
+    - Please exit my [GOOG](symbol) trade
+    - I want to offload my [AMZN](symbol) holdings
+    - Sell the shares of [NVDA](symbol) I'm holding
+    - Close out my [QQQ](symbol) position right now
+    - Could you close my entire [BA](symbol) trade?
+    - I'd like to dump my [AMD](symbol) shares

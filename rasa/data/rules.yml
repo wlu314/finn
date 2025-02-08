@@ -1,0 +1,38 @@
+version: "3.1"
+rules:
+
+- rule: Submit market_order_form
+  condition:
+    - active_loop: market_order_form
+  steps:
+    - action: market_order_form
+    - active_loop: null
+    - action: action_summarize_order
+    - action: action_listen
+
+- rule: Submit bracket_order_form
+  condition:
+    - active_loop: bracket_order_form
+  steps:
+    - action: bracket_order_form
+    - active_loop: null
+    - action: action_confirm_bracket_order
+    - action: action_listen
+
+- rule: Submit trailing_stop_order_form
+  condition:
+    - active_loop: trailing_stop_order_form
+  steps:
+    - action: trailing_stop_order_form
+    - active_loop: null
+    - action: action_summarize_trailing_stop
+    - action: action_listen
+
+- rule: Submit limit_order_form
+  condition:
+    - active_loop: limit_order_form
+  steps:
+    - action: limit_order_form
+    - active_loop: null
+    - action: action_summarize_limit_order
+    - action: action_listen

@@ -1,0 +1,291 @@
+version: "3.1"
+
+intents:
+  - request_market_order
+  - request_limit_order
+  - request_stop_order
+  - request_stop_limit_order
+  - request_bracket_order
+  - request_oto_order
+  - request_oco_order
+  - request_trailing_stop_order
+  - request_get_orders
+  - request_get_open_orders
+  - request_cancel_all_orders
+  - request_get_positions
+  - request_get_position_by_symbol
+  - request_close_position
+  - greet
+  - goodbye
+  - affirm
+  - deny
+
+responses:
+  utter_no_problem:
+    - text: "No problem at all!"
+    
+  utter_confirm_market_order:
+    - text: "Your market order for {symbol} has been placed successfully at the current market price."
+
+  utter_confirm_limit_order:
+    - text: "Your limit order for {symbol} at ${limit_price} has been placed."
+
+  utter_confirm_stop_order:
+    - text: "A stop order for {symbol} has been placed at ${stop_price}. It will trigger when the price reaches this level."
+
+  utter_confirm_stop_limit_order:
+    - text: "Your stop-limit order for {symbol} is set with a stop price of ${stop_price} and a limit price of ${limit_price}."
+
+  utter_confirm_bracket_order:
+    - text: "Bracket order placed for {symbol}. The stop-loss is set at ${stop_loss_price} and the take-profit at ${take_profit_price}."
+
+  utter_confirm_trailing_stop_order:
+    - text: "Your trailing stop order for {symbol} is set with a trailing amount of {trail_percent}%."
+
+  utter_get_orders:
+    - text: "Here are your recent orders: {order_list}."
+
+  utter_get_open_orders:
+    - text: "You have {num_open_orders} open orders. Here they are: {open_order_list}."
+
+  utter_cancel_all_orders:
+    - text: "All open orders have been successfully canceled."
+
+  utter_get_positions:
+    - text: "Here are your open positions: {positions_list}."
+
+  utter_get_position_by_symbol:
+    - text: "You currently hold {quantity} shares of {symbol} at an average price of ${avg_price}."
+
+  utter_close_position:
+    - text: "Your position in {symbol} has been successfully closed."
+
+  utter_invalid_symbol:
+    - text: "The symbol {symbol} is invalid or not available for trading. Please try again."
+
+  utter_invalid_order_type:
+    - text: "I'm not sure about that order type. You can place a market, limit, stop, or bracket order."
+
+  utter_invalid_request:
+    - text: "I couldn't process your request. Can you rephrase or specify your trade details?"
+
+  utter_risk_disclaimer:
+    - text: "Trading involves risk. Ensure you understand the market before placing trades. Past performance does not guarantee future results."
+
+  utter_market_conditions_warning:
+    - text: "Market conditions fluctuate. Always review trade confirmations and price movements before making decisions."
+
+  utter_insufficient_funds:
+    - text: "Your available balance (${cash_balance}) is insufficient for this trade."
+
+  utter_greet:
+    - text: "Hello! I can help you place trades, check orders, and manage your portfolio. What would you like to do?"
+
+  utter_goodbye:
+    - text: "Goodbye! Happy trading. 🚀"
+
+  utter_iamabot:
+    - text: "I am your trading assistant, powered by Rasa and Alpaca API."
+
+  utter_order_canceled: 
+    - text: "Your order has been canceled successfully."
+entities:
+  - symbol
+  - side
+  - qty
+  - notional
+  - limit_price
+  - stop_price
+  - trail_price
+  - trail_percent
+  - take_profit_price
+  - stop_loss_price
+  - time_in_force
+
+slots:
+  order_type:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: order_type
+      - type: from_text
+
+  symbol:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: symbol
+      - type: from_text
+
+  side:
+    type: text
+    influence_conversation: false
+    initial_value: "BUY"
+    mappings:
+      - type: from_entity
+        entity: side
+      - type: from_text
+
+  qty:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: qty
+      - type: from_text
+
+  notional:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: notional
+      - type: from_text
+
+  limit_price:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: limit_price
+      - type: from_text
+
+  stop_price:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: stop_price
+      - type: from_text
+
+  trail_price:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: trail_price
+      - type: from_text
+
+  trail_percent:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: trail_percent
+      - type: from_text
+
+  take_profit_price:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: take_profit_price
+      - type: from_text
+
+  stop_loss_price:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: stop_loss_price
+      - type: from_text
+
+  time_in_force:
+    type: text
+    influence_conversation: false
+    initial_value: "DAY"
+    mappings:
+      - type: from_entity
+        entity: time_in_force
+      - type: from_text
+
+forms:
+  market_order_form:
+    required_slots:
+      - symbol
+      - side
+      - qty
+      - notional
+      - time_in_force
+
+  limit_order_form:
+    required_slots:
+      - symbol
+      - side
+      - qty
+      - limit_price
+      - time_in_force
+
+  stop_order_form:
+    required_slots:
+      - symbol
+      - side
+      - qty
+      - stop_price
+      - time_in_force
+
+  stop_limit_order_form:
+    required_slots:
+      - symbol
+      - side
+      - qty
+      - stop_price
+      - limit_price
+      - time_in_force
+
+  trailing_stop_order_form:
+    required_slots:
+      - symbol
+      - side
+      - qty
+      - trail_price
+      - trail_percent
+      - time_in_force
+
+  bracket_order_form:
+    required_slots:
+      - symbol
+      - side
+      - qty
+      - limit_price
+      - stop_loss_price
+      - take_profit_price
+      - time_in_force
+
+  oto_order_form:
+    required_slots:
+      - symbol
+      - side
+      - qty
+      - limit_price
+      - stop_price
+      - time_in_force
+
+  oco_order_form:
+    required_slots:
+      - symbol
+      - side
+      - limit_price
+      - time_in_force
+
+actions:
+  - action_confirm_and_place_order
+  - action_get_orders
+  - action_cancel_all_orders
+  - action_get_positions
+  - action_get_position_by_symbol
+  - action_close_position
+  - action_get_open_orders
+  - action_summarize_order
+  - action_execute_market_order
+  - action_confirm_bracket_order
+  - action_summarize_trailing_stop
+  - action_place_trailing_stop
+  - action_summarize_limit_order
+  - action_place_limit_order
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

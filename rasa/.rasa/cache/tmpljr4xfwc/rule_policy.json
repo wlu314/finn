@@ -1,0 +1,55 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"trailing_stop_order_form\"}}]": "action_summarize_trailing_stop",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"trailing_stop_order_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_summarize_trailing_stop\"}}]": "action_listen",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"limit_order_form\"}}]": "action_summarize_limit_order",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"limit_order_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_summarize_limit_order\"}}]": "action_listen",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"market_order_form\"}}]": "action_summarize_order",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"market_order_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_summarize_order\"}}]": "action_listen",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"bracket_order_form\"}}]": "action_confirm_bracket_order",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"bracket_order_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_confirm_bracket_order\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"trailing_stop_order_form\"}, \"prev_action\": {\"action_name\": \"trailing_stop_order_form\"}, \"user\": {\"intent\": \"request_trailing_stop_order\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"trailing_stop_order_form\"}, \"prev_action\": {\"action_name\": \"action_place_trailing_stop\"}, \"user\": {\"intent\": \"affirm\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"trailing_stop_order_form\"}, \"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"limit_order_form\"}, \"prev_action\": {\"action_name\": \"limit_order_form\"}, \"user\": {\"intent\": \"request_limit_order\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"limit_order_form\"}, \"prev_action\": {\"action_name\": \"action_place_limit_order\"}, \"user\": {\"intent\": \"affirm\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"limit_order_form\"}, \"prev_action\": {\"action_name\": \"action_get_open_orders\"}, \"user\": {\"intent\": \"request_get_open_orders\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"market_order_form\"}, \"prev_action\": {\"action_name\": \"market_order_form\"}, \"user\": {\"intent\": \"request_market_order\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"market_order_form\"}, \"prev_action\": {\"action_name\": \"utter_order_canceled\"}, \"user\": {\"intent\": \"deny\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"bracket_order_form\"}, \"prev_action\": {\"action_name\": \"bracket_order_form\"}, \"user\": {\"intent\": \"request_bracket_order\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"bracket_order_form\"}, \"prev_action\": {\"action_name\": \"action_get_open_orders\"}, \"user\": {\"intent\": \"request_get_open_orders\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"market_order_form\"}, \"prev_action\": {\"action_name\": \"action_execute_market_order\"}, \"user\": {\"intent\": \"affirm\"}}]": "do_not_predict_loop_action",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}}, {\"active_loop\": {\"name\": \"market_order_form\"}, \"prev_action\": {\"action_name\": \"utter_goodbye\"}, \"user\": {\"intent\": \"goodbye\"}}]": "do_not_predict_loop_action"
+    },
+    "rules_not_in_stories": [
+      "handling active loops and forms - oto_order_form - action_listen",
+      "handling active loops and forms - bracket_order_form",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"trailing_stop_order_form\"}}]",
+      "predicting default action with intent restart",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"limit_order_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_summarize_limit_order\"}}]",
+      "handling active loops and forms - stop_order_form",
+      "handling active loops and forms - stop_limit_order_form - action_listen",
+      "predicting default action with intent back",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"market_order_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_summarize_order\"}}]",
+      "handling active loops and forms - market_order_form",
+      "handling active loops and forms - limit_order_form",
+      "handling active loops and forms - oto_order_form",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"trailing_stop_order_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_summarize_trailing_stop\"}}]",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"market_order_form\"}}]",
+      "handling active loops and forms - oco_order_form - action_listen",
+      "handling active loops and forms - stop_order_form - action_listen",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"bracket_order_form\"}}]",
+      "handling active loops and forms - trailing_stop_order_form",
+      "predicting default action with intent session_start",
+      "handling active loops and forms - oco_order_form",
+      "handling active loops and forms - stop_limit_order_form",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"limit_order_form\"}}]",
+      "[{\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"bracket_order_form\"}}, {\"active_loop\": {\"name\": \"should_not_be_set\"}, \"prev_action\": {\"action_name\": \"action_confirm_bracket_order\"}}]"
+    ]
+  }
+}
