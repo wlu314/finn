@@ -7,6 +7,18 @@
 ## Overview  
 **FinnBot.ai** is an AI-powered trading assistant designed to help users interact with financial markets through natural language queries. It processes user input using **RASA NLU**, converting it into actionable parameters for trading and market analysis. Finn currently integrates with the **Alpaca API**, enabling real-time market data retrieval, trade execution, and portfolio management. Future updates will expand support to additional trading platforms as time constraints allow.  
 
+## The _WHY_
+Finn, short for "Financial Navigator," empowers retail investors by automating execution, optimizing trading efficiency, and providing AI-driven insights. With Finn, regular investors gain the analytical power of financial professionals, enabling them to make informed decisions simply by asking investment-related questions.
+
+
+🔹 End-to-End System Flow
+1️⃣ User Request → "Place a market order for AAPL."
+2️⃣ Rasa Detects Intent → Calls `action_place_market_order`.
+3️⃣ Action Server Request → Rasa sends a request to rasa run actions.
+4️⃣ Alpaca API Call → Action server fetches data from Alpaca API.
+5️⃣ Response Sent → Processed result is returned to the user.
+
+
 ## Features  
 - **Natural Language Trade Execution** – Place market, limit, and stop orders directly via chat.  
 - **Portfolio Management** – View holdings, track performance, and manage open positions.  
