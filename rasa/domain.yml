@@ -89,6 +89,7 @@ responses:
 
   utter_order_canceled: 
     - text: "Your order has been canceled successfully."
+    
 entities:
   - symbol
   - side
@@ -101,6 +102,7 @@ entities:
   - take_profit_price
   - stop_loss_price
   - time_in_force
+  - order_type
 
 slots:
   order_type:
@@ -207,8 +209,7 @@ forms:
       - symbol
       - side
       - qty
-      - notional
-      - time_in_force
+# add notational and time_in_force another time
 
   limit_order_form:
     required_slots:

@@ -9,17 +9,19 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
-# 2. Market Order + User Affirms
+# 2. Market Order + User Buys (affirms)
 - story: market_order_affirm
   steps:
     - intent: request_market_order
     - action: market_order_form
-    - active_loop: market_order_form
+    - intent: affirm
+    - action: action_summarize_order
+    - action: action_listen
     - intent: affirm
     - action: action_execute_market_order
     - intent: goodbye
     - action: utter_goodbye
-
+    
 # 3. Market Order + User Denies
 - story: market_order_deny
   steps:
@@ -28,6 +30,7 @@ stories:
     - active_loop: market_order_form
     - intent: deny
     - action: utter_order_canceled
+
 
 # 4. Bracket Order + Then User Checks Open Orders
 - story: bracket_order_then_check_open

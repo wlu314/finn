@@ -55,16 +55,54 @@ nlu:
 
 - intent: request_market_order
   examples: |
-    - I want to buy [SPY](symbol) at market
+    - I want to [buy](side) [SPY](symbol) at market
     - Place a market order for [2](qty) shares of [AAPL](symbol)
-    - Buy [0.5](qty) shares of [TSLA](symbol) now
-    - Purchase [20](notional) dollars worth of [QQQ](symbol)
-    - Market order to sell [1](qty) share of [MSFT](symbol)
-    - Please buy [GOOG](symbol) at market price
+    - [Buy](side) [0.5](qty) shares of [TSLA](symbol) now
+    - Purchase [20](notional) dollars worth of [QQQ](symbol)  # Also "buy"
+    - Market order to [sell](side) [1](qty) share of [MSFT](symbol)
+    - Please [buy](side) [GOOG](symbol) at market price
     - I want to go long on [AMZN](symbol) with a market order for [1](qty) share
-    - Execute a market sell for [2](qty) shares of [AMD](symbol)
-    - Could you buy [NVDA](symbol) at the current price?
+    - Execute a market [sell](side) for [2](qty) shares of [AMD](symbol)
+    - Could you [buy](side) [NVDA](symbol) at the current price?
     - Market order for [5](qty) shares of [META](symbol)
+    - I want to [buy](side) [WMT](symbol) at market
+    - Place a market order for [7](qty) shares of [DIS](symbol)
+    - [Buy](side) [2.5](qty) shares of [SQ](symbol) now
+    - Purchase [30](notional) dollars worth of [ROKU](symbol) # also "buy"
+    - Market order to [sell](side) [1](qty) share of [CRM](symbol)
+    - Please [buy](side) [WORK](symbol) at market price
+    - I want to go long on [UBER](symbol) with a market order for [2](qty) shares
+    - Execute a market [sell](side) for [2](qty) shares of [TWLO](symbol)
+    - Could you [buy](side) [ABNB](symbol) at the current price?
+    - Market order for [3](qty) shares of [SPOT](symbol)
+    - [Buy](side) [40](notional) dollars worth of [T](symbol) right now
+    - I want to invest [15](notional) dollars in [BA](symbol)  # also "buy" side
+    - Let’s do a market [purchase](side) of [4](qty) shares of [PEP](symbol)
+    - [Sell](side) [1.2](qty) shares of [VZ](symbol) at the current market price
+    - Could you [purchase](side) [0.7](qty) shares of [COST](symbol) right away?
+    - I want to place a market [buy](side) order for [5](qty) shares of [SE](symbol)
+    - Please [sell](side) [DOCU](symbol) at the market for [3](qty) shares
+    - Go ahead and [buy](side) [2](qty) shares of [INTC](symbol) at market
+    - Market order for [10](notional) dollars worth of [ADBE](symbol)
+    - [Buy](side) [1](qty) share of [WYNN](symbol) now
+    - I want to [buy](side) [10](notional) dollars of [AAPL](symbol)
+    - [Purchase](side) [25](notional) dollars worth of [TSLA](symbol) now
+    - Please [sell](side) [DOCU](symbol) at the market for [3](qty) shares
+
+- synonym: buy
+  examples: |
+    - purchase
+    - invest
+    - go long
+    - place a buy
+
+- synonym: sell
+  examples: |
+    - offload
+    - liquidate
+    - short
+
+
 
 - intent: request_limit_order
   examples: |

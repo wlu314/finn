@@ -1,14 +1,23 @@
 version: "3.1"
 rules:
 
-- rule: Submit market_order_form
+# - rule: Submit market_order_form
+#   condition:
+#     - active_loop: market_order_form
+#   steps:
+#     - action: market_order_form
+#     - active_loop: null
+#     - action: action_summarize_order
+#     - action: action_listen
+
+- rule: Cancel market order
   condition:
     - active_loop: market_order_form
   steps:
-    - action: market_order_form
-    - active_loop: null
     - action: action_summarize_order
     - action: action_listen
+    - intent: deny
+    - action: utter_order_canceled
 
 - rule: Submit bracket_order_form
   condition:
